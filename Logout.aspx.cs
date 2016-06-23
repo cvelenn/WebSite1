@@ -11,6 +11,7 @@ public partial class InsertTip : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Session["user"] = null;
+        Session["EditData"] = null;
         FormsAuthentication.SignOut();
         Response.Redirect("Default.aspx");
     }

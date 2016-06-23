@@ -32,7 +32,7 @@
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
-                        <asp:MenuItem value="InsertTip" NavigateUrl="InsertTip.aspx" Text="Insert Tip"/>
+                        <asp:MenuItem value="InsertTip" NavigateUrl="InsertTip2.aspx" Text="Insert Tip"/>
                         <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>                        
                     </Items>
                 </asp:Menu>

@@ -11,9 +11,13 @@
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
             CellPadding="4" DataSourceID="SqlDataSource2" 
             EmptyDataText="There are no data records to display." ForeColor="#333333" 
-            GridLines="None">
+            GridLines="None" OnRowCommand="GridView1_RowCommand">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
+                <asp:ButtonField ButtonType="Button" CommandName="Edit" HeaderText="update" ShowHeader="True" Text="Update"  />
+                <asp:ButtonField ButtonType="Button" CommandName="DeleteRow" HeaderText="delete" ShowHeader="True" Text="Delete"  />
+                <asp:BoundField DataField="id" HeaderText="id" 
+                    SortExpression="id" />
                 <asp:BoundField DataField="league" HeaderText="league" 
                     SortExpression="league" />
                 <asp:BoundField DataField="event" HeaderText="event" SortExpression="event" />
@@ -43,7 +47,7 @@
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
             ConnectionString="<%$ ConnectionStrings:kladionicaConnectionString1 %>" 
             ProviderName="<%$ ConnectionStrings:kladionicaConnectionString1.ProviderName %>" 
-            SelectCommand="SELECT [league], [event], [date], [selection], [odd], [stake], [profit], [result], [bookmaker] FROM [tips]">
+            SelectCommand="SELECT [id], [league], [event], [date], [selection], [odd], [stake], [profit], [result], [bookmaker] FROM [tips]">
         </asp:SqlDataSource>
     </p>
     <p>
