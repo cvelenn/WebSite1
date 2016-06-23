@@ -1,9 +1,19 @@
 ﻿<%@ Page Title="Log In" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeFile="EditTip.aspx.cs" Inherits="EditTip" %>
 
+
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).ready(function () {
+            $('.date-time').datetimepicker();
+        });
+    });
+</script>
+
     <form id="form1" >
     <div>
     <table>
@@ -28,8 +38,7 @@
             <asp:Label ID="Label3" runat="server" Text="Label">Date</asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="Date" runat="server"  ></asp:TextBox>
-                 <asp:TextBox ID="Time" runat="server" ></asp:TextBox>
+                <asp:TextBox ID="Date" runat="server" class="date-time" ></asp:TextBox>
             </td>
         </tr>
         <tr>

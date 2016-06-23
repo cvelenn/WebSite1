@@ -34,6 +34,7 @@ public partial class EditTip : System.Web.UI.Page
 
         this.league.Text = cell[1].Trim();
         this.Event.Text = cell[2].ToString().Trim();
+        this.Date.Text = cell[3].ToString().Trim();
         this.section.Text = cell[4].ToString().Trim();
         this.odd.Text = cell[5].ToString().Trim();
         this.stake.Text = cell[6].ToString().Trim();
@@ -48,9 +49,7 @@ public partial class EditTip : System.Web.UI.Page
 
         string league = this.league.Text.Trim();
         string Event = this.Event.Text.Trim();
-        //DateTime date = DateTime.Parse(this.Date.Text);
-        //DateTime time = DateTime.Parse(this.Time.Text);
-        DateTime datetime = DateTime.Now;// new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, time.Second);
+        DateTime datetime = DateTime.Parse(Request.Form[Date.UniqueID]);
         string bookmarker = this.bookmarker.Text.Trim();
         string odd = this.odd.Text.Trim();
         string section = this.section.Text.Trim();
@@ -81,6 +80,5 @@ public partial class EditTip : System.Web.UI.Page
         Response.Redirect("Default.aspx");
 
     }
-
     
 }

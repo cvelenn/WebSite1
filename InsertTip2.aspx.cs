@@ -25,9 +25,7 @@ public partial class InsertTip2 : System.Web.UI.Page
     {
         string league = this.league.Text;
         string Event = this.Event.Text;
-        //DateTime date = DateTime.Parse(this.Date.Text);
-        //DateTime time = DateTime.Parse(this.Time.Text);
-        DateTime datetime = DateTime.Now;// new DateTime(date.Year, date.Month, date.Day, time.Hour, time.Minute, time.Second);
+        DateTime datetime = DateTime.Parse(Request.Form[Date.UniqueID]);
         string bookmarker = this.bookmarker.Text;
         string odd = this.odd.Text;
         string section = this.section.Text;
