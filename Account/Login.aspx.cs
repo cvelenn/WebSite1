@@ -36,10 +36,17 @@ public partial class Account_Login : System.Web.UI.Page
             }
         }
 
-        if (user != null) {
+        if (user != null)
+        {
             Session["user"] = user;
             FormsAuthentication.SetAuthCookie(username.ToString(), false);
             Response.Redirect("..\\Default.aspx");
         }
+        else 
+        {
+            Response.Redirect("Login.aspx");
+        }
+
+        
     }
 }

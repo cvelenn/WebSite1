@@ -16,7 +16,7 @@ public partial class EditTip : System.Web.UI.Page
 
         if (Session["user"] as Models.User == null) 
         {
-            Response.Redirect("Default.aspx");
+            Response.Redirect("Logout.aspx");
         }
 
         if (Session["EditData"] != null)
@@ -49,7 +49,11 @@ public partial class EditTip : System.Web.UI.Page
 
         string league = this.league.Text.Trim();
         string Event = this.Event.Text.Trim();
-        DateTime datetime = DateTime.Parse(Request.Form[Date.UniqueID]);
+        DateTime datetime;
+        if (DateTime.TryParse(Request.Form[Date.UniqueID], out datetime))
+        {
+            datetime = DateTime.UtcNow;
+        }
         string bookmarker = this.bookmarker.Text.Trim();
         string odd = this.odd.Text.Trim();
         string section = this.section.Text.Trim();

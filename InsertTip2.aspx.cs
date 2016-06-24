@@ -16,7 +16,7 @@ public partial class InsertTip2 : System.Web.UI.Page
 
         if (Session["user"] as Models.User == null) 
         {
-            Response.Redirect("Default.aspx");
+            Response.Redirect("Logout.aspx");
         }
 
     }
@@ -25,7 +25,11 @@ public partial class InsertTip2 : System.Web.UI.Page
     {
         string league = this.league.Text;
         string Event = this.Event.Text;
-        DateTime datetime = DateTime.Parse(Request.Form[Date.UniqueID]);
+        DateTime datetime;
+        if (DateTime.TryParse(Request.Form[Date.UniqueID], out datetime))
+        {
+            datetime = DateTime.UtcNow;
+        }
         string bookmarker = this.bookmarker.Text;
         string odd = this.odd.Text;
         string section = this.section.Text;
