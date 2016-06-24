@@ -50,7 +50,7 @@ public partial class EditTip : System.Web.UI.Page
         string league = this.league.Text.Trim();
         string Event = this.Event.Text.Trim();
         DateTime datetime;
-        if (DateTime.TryParse(Request.Form[Date.UniqueID], out datetime))
+        if (!DateTime.TryParse(Request.Form[Date.UniqueID], out datetime))
         {
             datetime = DateTime.UtcNow;
         }

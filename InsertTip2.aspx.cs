@@ -26,7 +26,7 @@ public partial class InsertTip2 : System.Web.UI.Page
         string league = this.league.Text;
         string Event = this.Event.Text;
         DateTime datetime;
-        if (DateTime.TryParse(Request.Form[Date.UniqueID], out datetime))
+        if (!DateTime.TryParse(Request.Form[Date.UniqueID], out datetime))
         {
             datetime = DateTime.UtcNow;
         }
