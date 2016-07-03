@@ -4,6 +4,28 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+    <table>
+        <tr>
+            <td>Profit</td>
+            <td><%= TotalProfit%></td>
+        </tr>
+        <tr>
+            <td>Yield</td>
+            <td><%= Yield%>%</td>
+        </tr>
+        <tr>
+            <td>Win Rate</td>
+            <td><%= WinRate%>%</td>
+        </tr>
+        <tr>
+            <td>Average Odds</td>
+            <td><%= AverageOdds%></td>
+        </tr>
+        <tr>
+            <td>Number Of Tips</td>
+            <td><%= NumberOfTips%></td>
+        </tr>
+    </table>
     <h2>
         Table of tips
     </h2>
