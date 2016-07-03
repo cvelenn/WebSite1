@@ -14,23 +14,26 @@
             GridLines="None" OnRowCommand="GridView1_RowCommand">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
-                <asp:ButtonField ButtonType="Button" CommandName="Edit" HeaderText="update" ShowHeader="True" Text="Update"  />
-                <asp:ButtonField ButtonType="Button" CommandName="DeleteRow" HeaderText="delete" ShowHeader="True" Text="Delete"  />
-                <asp:BoundField DataField="id" HeaderText="id" 
+                <asp:ButtonField ButtonType="Button" CommandName="Edit" HeaderText="Update" 
+                    ShowHeader="True" Text="Update"  />
+                <asp:ButtonField ButtonType="Button" CommandName="DeleteRow" 
+                    HeaderText="Delete" ShowHeader="True" Text="Delete"  />
+                <asp:BoundField DataField="id" HeaderText="Id" 
                     SortExpression="id" />
-                <asp:BoundField DataField="league" HeaderText="league" 
+                <asp:BoundField DataField="league" HeaderText="League" 
                     SortExpression="league" />
-                <asp:BoundField DataField="event" HeaderText="event" SortExpression="event" />
-                <asp:BoundField DataField="date" HeaderText="date" SortExpression="date" />
-                <asp:BoundField DataField="selection" HeaderText="selection" 
+                <asp:BoundField DataField="event" HeaderText="Event" SortExpression="event" />
+                <asp:BoundField DataField="date" HeaderText="Date" SortExpression="date" 
+                    DataFormatString="{0:MM/dd/yyyy HH:mm}" />
+                <asp:BoundField DataField="selection" HeaderText="Selection" 
                     SortExpression="selection" />
-                <asp:BoundField DataField="odd" HeaderText="odd" SortExpression="odd" />
-                <asp:BoundField DataField="stake" HeaderText="stake" SortExpression="stake" />
-                <asp:BoundField DataField="profit" HeaderText="profit" 
+                <asp:BoundField DataField="odd" HeaderText="Odds" SortExpression="odd" />
+                <asp:BoundField DataField="stake" HeaderText="Stake" SortExpression="stake" />
+                <asp:BoundField DataField="profit" HeaderText="Profit" 
                     SortExpression="profit" />
-                <asp:BoundField DataField="result" HeaderText="result" 
+                <asp:BoundField DataField="result" HeaderText="Result" 
                     SortExpression="result" />
-                <asp:BoundField DataField="bookmaker" HeaderText="bookmaker" 
+                <asp:BoundField DataField="bookmaker" HeaderText="Bookmaker" 
                     SortExpression="bookmaker" />
             </Columns>
             <EditRowStyle BackColor="#999999" />
