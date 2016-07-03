@@ -33,9 +33,7 @@ public partial class Overall : System.Web.UI.Page
         GridView1.Columns[1].Visible = hasPermission;
         //id
         GridView1.Columns[2].Visible = hasPermission;
-        //{"The data types ntext and varchar are incompatible in the equal to operator."}
 
-        //SqlDataSource2.SelectCommand = "SELECT [id], [league], [event], [date], [selection], [odd], [stake], [profit], [result], [bookmaker] FROM [tips] where [date] BETWEEN '2016-06-15 00:00:00.000' AND '2016-06-15 23:59:59.999'";
     }
 
     protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)

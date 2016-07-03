@@ -4,28 +4,52 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <table>
+
+    <div class="table-container">
+        <table>
+            <tr>
+                <td>Profit</td>
+                <td><%= TotalProfit%></td>
+            </tr>
+            <tr>
+                <td>Yield</td>
+                <td><%= Yield%>%</td>
+            </tr>
+            <tr>
+                <td>Win Rate</td>
+                <td><%= WinRate%>%</td>
+            </tr>
+            <tr>
+                <td>Average Odds</td>
+                <td><%= AverageOdds%></td>
+            </tr>
+            <tr>
+                <td>Number Of Tips</td>
+                <td><%= NumberOfTips%></td>
+            </tr>
+        </table>
+    </div>
+    <div class="table-container">
+        <table>
         <tr>
-            <td>Profit</td>
-            <td><%= TotalProfit%></td>
+            <th>Month</th>
+            <th>Profit</th>
+            <th>Yield</th>
+            <th>Number Of Tips</th>
         </tr>
-        <tr>
-            <td>Yield</td>
-            <td><%= Yield%>%</td>
-        </tr>
-        <tr>
-            <td>Win Rate</td>
-            <td><%= WinRate%>%</td>
-        </tr>
-        <tr>
-            <td>Average Odds</td>
-            <td><%= AverageOdds%></td>
-        </tr>
-        <tr>
-            <td>Number Of Tips</td>
-            <td><%= NumberOfTips%></td>
-        </tr>
-    </table>
+        <% for (int i = 0; i < MonthList.Count; i++)
+           { %>
+            <tr>
+                <td><%: MonthList[i]%></td>
+                <td><%: ProfitList[i]%></td>
+                <td><%: YieldList[i]%></td>
+                <td><%: NumberOfTipsList[i]%></td>
+            </tr>
+        <% } %>
+    
+        </table>
+    </div>
+
     <h2>
         Table of tips
     </h2>

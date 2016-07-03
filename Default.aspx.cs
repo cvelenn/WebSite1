@@ -17,6 +17,11 @@ public partial class _Default : System.Web.UI.Page
     public string AverageOdds = string.Empty;
     public string NumberOfTips = string.Empty;
 
+    public List<string> MonthList = new List<string>();
+    public List<string> ProfitList = new List<string>();
+    public List<string> YieldList = new List<string>();
+    public List<string> NumberOfTipsList = new List<string>();
+
     protected void Page_Load(object sender, EventArgs e)
     {
         String sqlCommand = "SELECT top 10 [id], [league], [event], [date], [selection], [odd], [stake], [profit], [result], [bookmaker] FROM [tips] {0} order by [date] DESC";
@@ -28,14 +33,15 @@ public partial class _Default : System.Web.UI.Page
 
         SqlDataSource2.SelectCommand = string.Format(sqlCommand, whereClause);
 
-
-
-        SqlCommand command = new SqlCommand("SELECT [date], [odd], [stake], [profit], [result] FROM [tips] where [result] != ''", connection);
+        SqlCommand command = new SqlCommand("SELECT [date], [odd], [stake], [profit], [result] FROM [tips] where [result] != ''  order by [date] DESC", connection);
         List<DateTime> dates = new List<DateTime>();
         List<double> odds = new List<double>();
         List<double> stake = new List<double>();
         List<double> profit = new List<double>();
         List<bool> result = new List<bool>();
+        int startYear = -1;
+        int startMonth = -1;
+        string start = string.Empty;
 
         connection.Open();
 
@@ -65,8 +71,23 @@ public partial class _Default : System.Web.UI.Page
             double st = 0;
             double winRate = 0;
             double avg = 0;
+
+            Dictionary<string, List<double>> profitDict = new Dictionary<string, List<double>>();
+            Dictionary<string, List<double>> stakeDict = new Dictionary<string, List<double>>();
+
             for (int i = 0; i < profit.Count; i++)
             {
+                if (startMonth == -1 || startYear < dates[i].Year || (startMonth > dates[i].Month && startYear == dates[i].Year))
+                {
+                    startMonth = dates[i].Month;
+                    startYear = dates[i].Year;
+                    start = dates[i].ToString("MMMM/yy");
+                    MonthList.Add(start);
+                    profitDict.Add(start, new List<double>());
+                    stakeDict.Add(start, new List<double>());
+                }
+                profitDict[start].Add(profit[i]);
+                stakeDict[start].Add(stake[i]);
                 prof += profit[i];
                 st += stake[i];
                 avg += odds[i];
@@ -80,6 +101,24 @@ public partial class _Default : System.Web.UI.Page
             WinRate = string.Format("{0:0.00}", ((winRate / profit.Count) * 100));
             AverageOdds = string.Format("{0:0.00}", (avg / profit.Count));
             NumberOfTips = profit.Count.ToString();
+
+            
+            foreach (string key in profitDict.Keys)
+            {
+                double prof2 = 0;
+                double st2 = 0;
+                int count = 0;
+                for (int i = 0; i < profitDict[key].Count; i++)
+                {
+                    prof2 += profitDict[key][i];
+                    st2 += stakeDict[key][i];
+                    count++;
+                }
+                YieldList.Add(string.Format("{0:0.00}", ((prof2 / st2) * 100)));
+                ProfitList.Add(prof2.ToString());
+                NumberOfTipsList.Add(count.ToString());
+                
+            }
 
             reader.Close();
         }
