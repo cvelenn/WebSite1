@@ -42,7 +42,7 @@
             <tr>
                 <td><%: MonthList[i]%></td>
                 <td><%: ProfitList[i]%></td>
-                <td><%: YieldList[i]%></td>
+                <td><%: YieldList[i]%>%</td>
                 <td><%: NumberOfTipsList[i]%></td>
             </tr>
         <% } %>
