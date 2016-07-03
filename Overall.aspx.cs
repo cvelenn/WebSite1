@@ -65,7 +65,7 @@ public partial class Overall : System.Web.UI.Page
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
-            Response.Redirect("Default.aspx");
+            Response.Redirect("Overall.aspx");
         }
     }
 }

@@ -81,7 +81,7 @@ public partial class EditTip : System.Web.UI.Page
         connection.Close();
 
         Session["EditData"] = null;
-        Response.Redirect("Default.aspx");
+        Response.Redirect("Overall.aspx");
 
     }
     

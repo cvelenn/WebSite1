@@ -54,7 +54,7 @@ public partial class InsertTip2 : System.Web.UI.Page
         connection.Open();
         command.ExecuteNonQuery();
         connection.Close();
-        Response.Redirect("Default.aspx");
+        Response.Redirect("Overall.aspx");
  
     }
     
