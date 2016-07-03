@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeFile="Default.aspx.cs" Inherits="_Default" %>
+    CodeFile="Overall.aspx.cs" Inherits="Overall" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
@@ -11,9 +11,15 @@
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
             CellPadding="4" DataSourceID="SqlDataSource2" 
             EmptyDataText="There are no data records to display." ForeColor="#333333" 
-            GridLines="None" >
+            GridLines="None" OnRowCommand="GridView1_RowCommand">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
+                <asp:ButtonField ButtonType="Button" CommandName="Edit" HeaderText="Update" 
+                    ShowHeader="True" Text="Update"  />
+                <asp:ButtonField ButtonType="Button" CommandName="DeleteRow" 
+                    HeaderText="Delete" ShowHeader="True" Text="Delete"  />
+                <asp:BoundField DataField="id" HeaderText="Id" 
+                    SortExpression="id" />
                 <asp:BoundField DataField="league" HeaderText="League" 
                     SortExpression="league" />
                 <asp:BoundField DataField="event" HeaderText="Event" SortExpression="event" />
@@ -43,7 +49,8 @@
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
             ConnectionString="<%$ ConnectionStrings:kladionicaConnectionString1 %>" 
-            ProviderName="<%$ ConnectionStrings:kladionicaConnectionString1.ProviderName %>" >
+            ProviderName="<%$ ConnectionStrings:kladionicaConnectionString1.ProviderName %>" 
+            SelectCommand="SELECT [id],[league], [event], [date], [selection], [odd], [stake], [profit], [result], [bookmaker] FROM [tips] order by [date] DESC">
         </asp:SqlDataSource>
     </p>
     <p>

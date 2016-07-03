@@ -13,48 +13,14 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        bool hasPermission = false;
-        if (Session["user"] as Models.User != null)
+        String sqlCommand = "SELECT top 10 [id], [league], [event], [date], [selection], [odd], [stake], [profit], [result], [bookmaker] FROM [tips] {0} order by [date] DESC";
+        String whereClause = "";
+        if (Session["user"] as Models.User == null)
         {
-            hasPermission = true;
+            whereClause = "where [result] != ''";
         }
-        //update
-        GridView1.Columns[0].Visible = hasPermission;
-        //delete
-        GridView1.Columns[1].Visible = hasPermission;
-        //id
-        GridView1.Columns[2].Visible = hasPermission;
-        //{"The data types ntext and varchar are incompatible in the equal to operator."}
+
+        SqlDataSource2.SelectCommand = string.Format(sqlCommand, whereClause);
     }
 
-    protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
-    {
-        if (e.CommandName == "Edit")
-        {
-            //Write code to add to card
-
-            int RowIndex = int.Parse(e.CommandArgument.ToString());
-            List<string> editData = new List<string>();
-            for (int i = 0; i < 10; i++ )
-            {
-                editData.Add(GridView1.Rows[RowIndex].Cells[i + 2].Text);
-            }
-            
-            Session["EditData"] = editData;
-
-            Response.Redirect("EditTip.aspx");
-        }
-        if (e.CommandName == "DeleteRow")
-        {
-            int RowIndex = int.Parse(e.CommandArgument.ToString());
-            string id = GridView1.Rows[RowIndex].Cells[2].Text;
-
-            SqlCommand command = new SqlCommand("delete from tips where id like '" + id + "'", connection);
-
-            connection.Open();
-            command.ExecuteNonQuery();
-            connection.Close();
-            Response.Redirect("Default.aspx");
-        }
-    }
 }

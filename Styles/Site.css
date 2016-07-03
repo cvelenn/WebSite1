@@ -31,6 +31,7 @@ p
 {
     margin-bottom: 10px;
     line-height: 1.6em;
+    width: 656px;
 }
 
 
@@ -117,8 +118,9 @@ first child of the left and right table columns */
 .main
 {
     padding: 0px 12px;
-    margin: 12px 8px 8px 8px;
+    margin: 0px 8px 0px 8px;
     min-height: 420px;
+    overflow: auto;
 }
 
 .leftCol
