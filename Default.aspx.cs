@@ -10,6 +10,7 @@ using System.Web.UI.DataVisualization.Charting;
 
 public partial class _Default : System.Web.UI.Page
 {
+    //<add name="kladionicaConnectionString1" connectionString="Data Source=188.121.44.217;Initial Catalog=kladionica2;Integrated Security=False;User ID=rastko86;Password=Dajpara1509!;Connect Timeout=15;Encrypt=False;Packet Size=4096" providerName="System.Data.SqlClient" />
     SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["kladionicaConnectionString1"].ConnectionString);
 
     public string TotalProfit = string.Empty;
