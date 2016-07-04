@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Web.UI.DataVisualization.Charting;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -17,6 +18,7 @@ public partial class _Default : System.Web.UI.Page
     public string AverageOdds = string.Empty;
     public string NumberOfTips = string.Empty;
 
+    public List<DateTime> ChartDates = new List<DateTime>();
     public List<string> MonthList = new List<string>();
     public List<string> ProfitList = new List<string>();
     public List<string> YieldList = new List<string>();
@@ -82,6 +84,7 @@ public partial class _Default : System.Web.UI.Page
                     startMonth = dates[i].Month;
                     startYear = dates[i].Year;
                     start = dates[i].ToString("MMMM/yy");
+                    ChartDates.Add(dates[i]);
                     MonthList.Add(start);
                     profitDict.Add(start, new List<double>());
                     stakeDict.Add(start, new List<double>());
@@ -102,7 +105,8 @@ public partial class _Default : System.Web.UI.Page
             AverageOdds = string.Format("{0:0.00}", (avg / profit.Count));
             NumberOfTips = profit.Count.ToString();
 
-            
+            Series s = Chart1.Series["Series1"];
+            int dateCounter = 0;
             foreach (string key in profitDict.Keys)
             {
                 double prof2 = 0;
@@ -117,8 +121,24 @@ public partial class _Default : System.Web.UI.Page
                 YieldList.Add(string.Format("{0:0.00}", ((prof2 / st2) * 100)));
                 ProfitList.Add(prof2.ToString());
                 NumberOfTipsList.Add(count.ToString());
+
+                s.Points.AddXY(ChartDates[dateCounter++], prof2);
                 
             }
+
+            System.Drawing.Color c = System.Drawing.Color.FromArgb(93, 123, 157);
+            s.Color = c;
+            //title
+            Title title = new Title("Profit", Docking.Top);
+            title.ForeColor = c;
+            Chart1.Titles.Add(title);
+
+            //axis labels
+            Chart1.ChartAreas[0].AxisY.LabelStyle.Format = "{0:} units";
+            Chart1.ChartAreas[0].AxisY.LabelStyle.ForeColor = c;
+            Chart1.ChartAreas[0].AxisX.LabelStyle.Format = "{0:MM/yy}";
+
+            // ToolTip="Date: #VALX, Profit: #VALY units"
 
             reader.Close();
         }

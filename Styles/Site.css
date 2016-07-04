@@ -294,3 +294,22 @@ div.accountInfo
     text-align: right;
     padding-right: 10px;
 }
+
+.table-container 
+{
+    float: left;
+    padding-right: 30px;
+}
+.month-table
+{
+    max-height: 250px;
+    overflow: auto;
+}
+.width50
+{
+    width: 50px;
+}
+.width100
+{
+    width: 100px;
+}

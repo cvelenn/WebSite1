@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
+<%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
+
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
@@ -8,46 +10,62 @@
     <div class="table-container">
         <table>
             <tr>
-                <td>Profit</td>
+                <td style="background: #5D7B9D; color: white">Profit</td>
                 <td><%= TotalProfit%></td>
             </tr>
             <tr>
-                <td>Yield</td>
+                <td style="background: #5D7B9D; color: white">Yield</td>
                 <td><%= Yield%>%</td>
             </tr>
             <tr>
-                <td>Win Rate</td>
+                <td style="background: #5D7B9D; color: white">Win Rate</td>
                 <td><%= WinRate%>%</td>
             </tr>
             <tr>
-                <td>Average Odds</td>
+                <td style="background: #5D7B9D; color: white">Average Odds</td>
                 <td><%= AverageOdds%></td>
             </tr>
             <tr>
-                <td>Number Of Tips</td>
+                <td style="background: #5D7B9D; color: white">No. Tips</td>
                 <td><%= NumberOfTips%></td>
             </tr>
         </table>
     </div>
     <div class="table-container">
-        <table>
-        <tr>
-            <th>Month</th>
-            <th>Profit</th>
-            <th>Yield</th>
-            <th>Number Of Tips</th>
-        </tr>
-        <% for (int i = 0; i < MonthList.Count; i++)
-           { %>
-            <tr>
-                <td><%: MonthList[i]%></td>
-                <td><%: ProfitList[i]%></td>
-                <td><%: YieldList[i]%>%</td>
-                <td><%: NumberOfTipsList[i]%></td>
+        <table>            
+            <tr style="background: #5D7B9D; color: white">
+                <th class="width50">Month</th>
+                <th class="width50">Profit</th>
+                <th class="width100">Yield</th>
+                <th class="width50">No. Tips</th>
             </tr>
-        <% } %>
-    
         </table>
+        <div class="month-table">
+            <table>
+            <% for (int i = 0; i < MonthList.Count; i++)
+                { %>
+                <tr>
+                    <td class="width50"><%: MonthList[i]%></td>
+                    <td class="width50"><%: ProfitList[i]%></td>
+                    <td class="width100"><%: YieldList[i]%>%</td>
+                    <td class="width50"><%: NumberOfTipsList[i]%></td>
+                </tr>
+            <% } %>
+            </table>
+        </div>
+    </div>
+
+    <div class="chart">
+        <asp:Chart ID="Chart1" runat="server" Width="443px">
+            <series>
+                <asp:Series ChartArea="ChartArea1" ChartType="Line" Name="Series1">
+                </asp:Series>
+            </series>
+            <chartareas>
+                <asp:ChartArea Name="ChartArea1">
+                </asp:ChartArea>
+            </chartareas>
+        </asp:Chart>
     </div>
 
     <h2>
@@ -57,7 +75,7 @@
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
             CellPadding="4" DataSourceID="SqlDataSource2" 
             EmptyDataText="There are no data records to display." ForeColor="#333333" 
-            GridLines="None" >
+            GridLines="None" Width="915px" >
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:BoundField DataField="league" HeaderText="League" 
