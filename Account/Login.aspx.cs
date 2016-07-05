@@ -21,6 +21,7 @@ public partial class Account_Login : System.Web.UI.Page
         string username = LoginUser.UserName;
         string password = LoginUser.Password;
         Models.User user = null;
+        DateTime date = DateTime.MinValue;
         using (SqlCommand command = new SqlCommand("select * from accounts where username='" +  username + "' and password='" + password + "'", connection))
         {
             connection.Open();
@@ -28,12 +29,18 @@ public partial class Account_Login : System.Web.UI.Page
             {
                 while (reader.Read())
                 {
+                    if (!DateTime.TryParse(reader["account"].ToString().Trim(), out date))
+                    {
+                        date = DateTime.MinValue;
+                    }
                     user = new Models.User(reader["username"].ToString().Trim(),
                         reader["password"].ToString().Trim(),
-                        reader["account"].ToString().Trim());
+                        reader["account"].ToString().Trim(),
+                        date);
                     break;
                 }
             }
+            connection.Close();
         }
 
         if (user != null)

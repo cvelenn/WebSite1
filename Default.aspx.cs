@@ -29,7 +29,8 @@ public partial class _Default : System.Web.UI.Page
     {
         String sqlCommand = "SELECT top 10 [id], [league], [event], [date], [selection], [odd], [stake], [profit], [result], [bookmaker] FROM [tips] {0} order by [date] DESC";
         String whereClause = "";
-        if (Session["user"] as Models.User == null)
+        Models.User user = Session["user"] as Models.User;
+        if (user == null || !user.CanSeeTips())
         {
             whereClause = "where [result] != ''";
         }

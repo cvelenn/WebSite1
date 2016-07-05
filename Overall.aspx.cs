@@ -16,11 +16,12 @@ public partial class Overall : System.Web.UI.Page
         bool hasPermission = false;
         String sqlCommand = "SELECT [id], [league], [event], [date], [selection], [odd], [stake], [profit], [result], [bookmaker] FROM [tips] {0} order by [date] DESC";
         String whereClause = "";
-        if (Session["user"] as Models.User != null)
+        Models.User user = Session["user"] as Models.User;
+        if (user != null)
         {
-            hasPermission = true;
+            hasPermission = user.CanChangeTips();
         }
-        else
+        if (user == null || !user.CanSeeTips())
         {
             whereClause = "where [result] != ''";
         }

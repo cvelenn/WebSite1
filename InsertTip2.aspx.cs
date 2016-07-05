@@ -14,7 +14,8 @@ public partial class InsertTip2 : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        if (Session["user"] as Models.User == null) 
+        Models.User user = Session["user"] as Models.User;
+        if (user == null || !user.CanChangeTips())
         {
             Response.Redirect("Logout.aspx");
         }

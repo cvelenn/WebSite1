@@ -11,7 +11,7 @@ public partial class Account_Register : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];
+        //RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];
     }
 
     protected void RegisterUser_CreatedUser(object sender, EventArgs e)

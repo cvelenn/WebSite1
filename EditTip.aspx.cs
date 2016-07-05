@@ -10,11 +10,12 @@ using System.Configuration;
 public partial class EditTip : System.Web.UI.Page
 {
     SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["kladionicaConnectionString1"].ConnectionString);
-
+    
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        if (Session["user"] as Models.User == null) 
+        Models.User user = Session["user"] as Models.User;
+        if (user == null || !user.CanChangeTips())
         {
             Response.Redirect("Logout.aspx");
         }
