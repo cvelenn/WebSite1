@@ -93,11 +93,11 @@ public partial class UpdateUserStatus : System.Web.UI.Page
 
         if (user.account.Equals("pending"))
         {
-            body = "User is registrated'\n";
+            body += "User is registrated'\n";
         }
         if (DateEntered)
         {
-            body = "Date-time expires at " + datetime.ToString();
+            body += "Date-time expires at " + datetime.ToString();
         }
 
         try
