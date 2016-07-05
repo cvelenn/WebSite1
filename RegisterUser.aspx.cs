@@ -119,14 +119,14 @@ public partial class RegisterUser : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        //if (!checkBasicFieldInformation())
-        //{
-        //    return;
-        //}
-        //if (!checkIfDataAlreadyExists())
-        //{
-        //    return;
-        //}
+        if (!checkBasicFieldInformation())
+        {
+            return;
+        }
+        if (!checkIfDataAlreadyExists())
+        {
+            return;
+        }
 
         InsertRegistration();
         string body = "Username: '" + UserName.Text + "'\n";

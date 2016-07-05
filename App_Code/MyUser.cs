@@ -17,6 +17,7 @@ namespace Models
         /// </summary>
         public string account;
         public DateTime date;
+        public string Email;
 
         public bool CanChangeTips() 
         {

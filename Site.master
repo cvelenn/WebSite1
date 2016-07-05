@@ -42,7 +42,7 @@
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
                         <asp:MenuItem NavigateUrl="~/Overall.aspx" Text="Overall results"/>
                         <asp:MenuItem value="InsertTip" NavigateUrl="InsertTip2.aspx" Text="Insert Tip"/>
-                        <asp:MenuItem value="UpdateUserStatus" NavigateUrl="InsertTip2.aspx" Text="Update User Status"/>
+                        <asp:MenuItem value="UpdateUserStatus" NavigateUrl="UpdateUserStatus.aspx" Text="Update User Status"/>
                         <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>                        
                     </Items>
                 </asp:Menu>

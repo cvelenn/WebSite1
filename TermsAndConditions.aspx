@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeFile="Copy of TermsAndConditions.aspx.cs" Inherits="TermsAndConditions" %>
+    CodeFile="TermsAndConditions.aspx.cs" Inherits="TermsAndConditions" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
