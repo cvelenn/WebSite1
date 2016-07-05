@@ -13,11 +13,7 @@ using System.Net;
 public partial class RegisterUser : System.Web.UI.Page
 {
     SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["kladionicaConnectionString1"].ConnectionString);
-    private string email = ConfigurationManager.AppSettings["emailaddress"].ToString();
     private string toEmail = ConfigurationManager.AppSettings["toemailaddress"].ToString();
-    private string emailpassword = ConfigurationManager.AppSettings["emailpassword"].ToString();
-    private string smtpHost = ConfigurationManager.AppSettings["SMTPHost"].ToString();
-    private string smtpPort = ConfigurationManager.AppSettings["SMTPPort"].ToString();
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -121,43 +117,23 @@ public partial class RegisterUser : System.Web.UI.Page
         connection.Close();
     }
 
-    private void sendEmail() 
+    protected void Button1_Click(object sender, EventArgs e)
     {
+        //if (!checkBasicFieldInformation())
+        //{
+        //    return;
+        //}
+        //if (!checkIfDataAlreadyExists())
+        //{
+        //    return;
+        //}
 
-        string subject = "New User";
+        InsertRegistration();
         string body = "Username: '" + UserName.Text + "'\n";
         body += "Email: " + Email.Text + "\n";
         body += "Full Name: " + FullName.Text + "\n";
-        //https://www.google.com/settings/security/lesssecureapps?rfn=27&rfnc=1&asae=2&anexp=lbe-R1_A
-        // smtp settings
-        var smtp = new System.Net.Mail.SmtpClient();
-        {
-            smtp.Host = smtpHost;
-            smtp.Port = int.Parse(smtpPort);
-            smtp.EnableSsl = true;
-            smtp.UseDefaultCredentials = true;
-            smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
-            smtp.Credentials = new NetworkCredential(email, emailpassword);
-            smtp.Timeout = 20000;
-        }
-        // Passing values to smtp object
-        smtp.Send(email, toEmail, subject, body); 
 
-    }
-
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-        if (!checkBasicFieldInformation())
-        {
-            return;
-        }
-        if (!checkIfDataAlreadyExists())
-        {
-            return;
-        }
-
-        InsertRegistration();
-        sendEmail();
+        SendMail.SendEmail("New User", body, toEmail);
 
         Response.Redirect("PendingRegistration.aspx");
     }
