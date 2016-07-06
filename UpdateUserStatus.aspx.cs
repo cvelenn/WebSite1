@@ -27,13 +27,16 @@ public partial class UpdateUserStatus : System.Web.UI.Page
         Label3.Visible =  false;
         Date.Visible = false;
         UpdateUser.Visible = false;
+        EmailLabel.Visible = false;
+        DateLabel.Visible = false;
+        Label4.Visible = false;
+        Label5.Visible = false;
     }
 
     private void searchForUser() 
     {
         Models.User user = null;
         DateTime date = DateTime.MinValue;
-
         using (SqlCommand command = new SqlCommand("select * from accounts where username=@username", connection))
         {
             command.Parameters.AddWithValue("@username", UsernameTB.Text);
@@ -43,10 +46,11 @@ public partial class UpdateUserStatus : System.Web.UI.Page
             {
                 while (reader.Read())
                 {
-                    if (!DateTime.TryParse(reader["account"].ToString().Trim(), out date))
+                    if (!DateTime.TryParse(reader["date"].ToString().Trim(), out date))
                     {
                         date = DateTime.MinValue;
                     }
+
                     user = new Models.User(reader["username"].ToString().Trim(),
                         reader["password"].ToString().Trim(),
                         reader["account"].ToString().Trim(),
@@ -70,6 +74,19 @@ public partial class UpdateUserStatus : System.Web.UI.Page
             Label3.Visible = true;
             Date.Visible = true;
             UpdateUser.Visible = true;
+            EmailLabel.Visible = true;            
+            Label4.Visible = true;
+            EmailLabel.Text = user.Email;
+            DateLabel.Visible = true;
+            Label5.Visible = true;
+            if (user.date != DateTime.MinValue)
+            {
+                DateLabel.Text = user.date.ToString("dd/MM/yyyy HH:mm");
+            }
+            else 
+            {
+                DateLabel.Text = "-";
+            }
         }
     }
 
@@ -103,7 +120,7 @@ public partial class UpdateUserStatus : System.Web.UI.Page
         }
         if (DateEntered)
         {
-            body += "Date-time expires at " + datetime.ToString();
+            body += "Date-time expires at " + datetime.ToString("dd/MM/yyyy HH:mm");
         }
 
         try

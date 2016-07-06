@@ -37,7 +37,19 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Label ID="Label3" runat="server" Text="ExpireDate"></asp:Label>
+                        <asp:Label ID="Label4" runat="server" Text="Email:"></asp:Label>
+                        <asp:Label ID="EmailLabel" runat="server" Text=""></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label5" runat="server" Text="Previouse Date:"></asp:Label>
+                        <asp:Label ID="DateLabel" runat="server" Text=""></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label3" runat="server" Text="Set Date:"></asp:Label>
                         <asp:TextBox ID="Date" runat="server" class="date-time" ></asp:TextBox>
                     </td>
                 </tr>
