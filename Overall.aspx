@@ -24,7 +24,7 @@
                     SortExpression="league" />
                 <asp:BoundField DataField="event" HeaderText="Event" SortExpression="event" />
                 <asp:BoundField DataField="date" HeaderText="Date" SortExpression="date" 
-                    DataFormatString="{0:MM/dd/yyyy HH:mm}" />
+                    DataFormatString="{0:dd/MM/yyyy HH:mm}" />
                 <asp:BoundField DataField="selection" HeaderText="Selection" 
                     SortExpression="selection" />
                 <asp:BoundField DataField="odd" HeaderText="Odds" SortExpression="odd" />

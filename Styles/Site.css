@@ -313,3 +313,19 @@ div.accountInfo
 {
     width: 100px;
 }
+.vertical-td
+{
+    background: #5D7B9D; 
+    color: white; 
+    font-weight: bold;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.vertical-td-right
+{
+    padding-left: 5px;
+}
+.my-h2
+{
+    padding-bottom: 10px;
+}

@@ -26,7 +26,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="Search" runat="server" Text="Button" onclick="Search_Click" />
+                        <asp:Button ID="Search" runat="server" Text="Search" onclick="Search_Click" />
                     </td>
                 </tr>
                 <tr>

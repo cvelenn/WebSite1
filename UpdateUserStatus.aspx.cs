@@ -16,6 +16,12 @@ public partial class UpdateUserStatus : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        Models.User user = Session["user"] as Models.User;
+        if (user == null || !user.CanChangeTips())
+        {
+            Response.Redirect("Logout.aspx");
+        }
+
         RegisterCX.Visible = false;
         Label2.Visible = false;
         Label3.Visible =  false;

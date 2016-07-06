@@ -7,27 +7,30 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
+    <h2 class="my-h2">
+        Overall statistics
+    </h2>
     <div class="table-container">
         <table>
             <tr>
-                <td style="background: #5D7B9D; color: white">Profit</td>
-                <td><%= TotalProfit%></td>
+                <td class="vertical-td">Profit</td>
+                <td class="vertical-td-right"><%= TotalProfit%></td>
             </tr>
             <tr>
-                <td style="background: #5D7B9D; color: white">Yield</td>
-                <td><%= Yield%>%</td>
+                <td class="vertical-td">Yield</td>
+                <td class="vertical-td-right"><%= Yield%>%</td>
             </tr>
             <tr>
-                <td style="background: #5D7B9D; color: white">Win Rate</td>
-                <td><%= WinRate%>%</td>
+                <td class="vertical-td">Win Rate</td>
+                <td class="vertical-td-right"><%= WinRate%>%</td>
             </tr>
             <tr>
-                <td style="background: #5D7B9D; color: white">Average Odds</td>
-                <td><%= AverageOdds%></td>
+                <td class="vertical-td">Average Odds</td>
+                <td class="vertical-td-right"><%= AverageOdds%></td>
             </tr>
             <tr>
-                <td style="background: #5D7B9D; color: white">No. Tips</td>
-                <td><%= NumberOfTips%></td>
+                <td class="vertical-td">No. Tips</td>
+                <td class="vertical-td-right"><%= NumberOfTips%></td>
             </tr>
         </table>
     </div>
@@ -82,7 +85,7 @@
                     SortExpression="league" />
                 <asp:BoundField DataField="event" HeaderText="Event" SortExpression="event" />
                 <asp:BoundField DataField="date" HeaderText="Date" SortExpression="date" 
-                    DataFormatString="{0:MM/dd/yyyy HH:mm}" />
+                    DataFormatString="{0:dd/MM/yyyy HH:mm}" />
                 <asp:BoundField DataField="selection" HeaderText="Selection" 
                     SortExpression="selection" />
                 <asp:BoundField DataField="odd" HeaderText="Odds" SortExpression="odd" />
