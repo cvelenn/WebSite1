@@ -41,10 +41,13 @@
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>  
                         <asp:MenuItem NavigateUrl="~/Overall.aspx" Text="Overall results"/>
                         <asp:MenuItem value="InsertTip" NavigateUrl="InsertTip2.aspx" Text="Insert Tip"/>
                         <asp:MenuItem value="UpdateUserStatus" NavigateUrl="UpdateUserStatus.aspx" Text="Update User Status"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>                        
+                        <asp:MenuItem value="Subscriptions" NavigateUrl="Subscriptions.aspx" Text="Subscriptions"/>
+                        <asp:MenuItem value="ContactUs" NavigateUrl="ContactUs.aspx" Text="Contact Us"/>
+                                              
                     </Items>
                 </asp:Menu>
             </div>

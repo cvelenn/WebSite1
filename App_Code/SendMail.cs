@@ -33,7 +33,7 @@ public class SendMail
             {
                 smtp.Host = smtpHost;
                 smtp.Port = int.Parse(smtpPort);
-                smtp.EnableSsl = true;
+                smtp.EnableSsl = false;
                 smtp.UseDefaultCredentials = true;
                 smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
                 smtp.Credentials = new NetworkCredential(email, emailpassword);
@@ -42,7 +42,7 @@ public class SendMail
             // Passing values to smtp object
             smtp.Send(email, toEmail, subject, body);
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             
             mailnotExcessible = true;
