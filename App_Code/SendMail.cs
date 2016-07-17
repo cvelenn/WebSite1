@@ -15,6 +15,7 @@ public class SendMail
     private static string emailpassword = ConfigurationManager.AppSettings["emailpassword"].ToString();
     private static string smtpHost = ConfigurationManager.AppSettings["SMTPHost"].ToString();
     private static string smtpPort = ConfigurationManager.AppSettings["SMTPPort"].ToString();
+    private static bool enableSsl = bool.Parse(ConfigurationManager.AppSettings["EnableSsl"].ToString());
     private static bool mailnotExcessible = true;
     public static bool IsMailExcessible {
         get {
@@ -33,7 +34,7 @@ public class SendMail
             {
                 smtp.Host = smtpHost;
                 smtp.Port = int.Parse(smtpPort);
-                smtp.EnableSsl = false;
+                smtp.EnableSsl = enableSsl;
                 smtp.UseDefaultCredentials = true;
                 smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
                 smtp.Credentials = new NetworkCredential(email, emailpassword);

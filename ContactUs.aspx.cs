@@ -24,11 +24,11 @@ public partial class ContactUs : System.Web.UI.Page
         string mail = UserName.Text;
         if (!string.IsNullOrWhiteSpace(mail))
         {
-            string body = "Question from: '" + UserName.Text + "'\n";
+            string body = "Question from: '" + mail + "'\n";
 
             body += "Question: " + Request.Form["S1"] + "\n";
 
-            SendMail.SendEmail("Question", body, mail);
+            SendMail.SendEmail("Question", body, email);
 
             Response.Redirect("Default.aspx");
         }
