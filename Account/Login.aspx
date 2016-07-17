@@ -40,6 +40,7 @@
                         <asp:Label ID="RememberMeLabel" runat="server" AssociatedControlID="RememberMe" CssClass="inline">Keep me logged in</asp:Label>
                     </p>
                 </fieldset>
+                <asp:HyperLink ID="RegisterHyperLink" href="..\SendPassword.aspx" runat="server" EnableViewState="false">Forgotten password</asp:HyperLink>
                 <p class="submitButton">
                     <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" 
                         ValidationGroup="LoginUserValidationGroup" onclick="LoginButton_Click" 

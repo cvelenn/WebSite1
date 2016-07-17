@@ -59,7 +59,7 @@
     </div>
 
     <div class="chart">
-        <asp:Chart ID="Chart1" runat="server" Width="443px">
+        <asp:Chart ID="Chart1" runat="server" Width="409px">
             <series>
                 <asp:Series ChartArea="ChartArea1" ChartType="Line" Name="Series1">
                 </asp:Series>

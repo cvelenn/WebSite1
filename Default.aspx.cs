@@ -19,7 +19,7 @@ public partial class _Default : System.Web.UI.Page
     public string AverageOdds = string.Empty;
     public string NumberOfTips = string.Empty;
 
-    public List<DateTime> ChartDates = new List<DateTime>();
+    public Dictionary<DateTime, double> ChartDates = new Dictionary<DateTime, double>();
     public List<string> MonthList = new List<string>();
     public List<string> ProfitList = new List<string>();
     public List<string> YieldList = new List<string>();
@@ -86,11 +86,19 @@ public partial class _Default : System.Web.UI.Page
                     startMonth = dates[i].Month;
                     startYear = dates[i].Year;
                     start = dates[i].ToString("MMMM/yy");
-                    ChartDates.Add(dates[i]);
                     MonthList.Add(start);
                     profitDict.Add(start, new List<double>());
                     stakeDict.Add(start, new List<double>());
                 }
+                if (!ChartDates.ContainsKey(dates[i]))
+                {
+                    ChartDates.Add(dates[i], profit[i]);
+                }
+                else 
+                {
+                    ChartDates[dates[i]] += profit[i];
+                }
+
                 profitDict[start].Add(profit[i]);
                 stakeDict[start].Add(stake[i]);
                 prof += profit[i];
@@ -108,7 +116,6 @@ public partial class _Default : System.Web.UI.Page
             NumberOfTips = profit.Count.ToString();
 
             Series s = Chart1.Series["Series1"];
-            int dateCounter = 0;
             foreach (string key in profitDict.Keys)
             {
                 double prof2 = 0;
@@ -123,9 +130,11 @@ public partial class _Default : System.Web.UI.Page
                 YieldList.Add(string.Format("{0:0.00}", ((prof2 / st2) * 100)));
                 ProfitList.Add(prof2.ToString());
                 NumberOfTipsList.Add(count.ToString());
-
-                s.Points.AddXY(ChartDates[dateCounter++], prof2);
                 
+            }
+            foreach (DateTime key in ChartDates.Keys)
+            {
+                s.Points.AddXY(key, ChartDates[key]);
             }
 
             System.Drawing.Color c = System.Drawing.Color.FromArgb(93, 123, 157);
@@ -134,7 +143,7 @@ public partial class _Default : System.Web.UI.Page
             Title title = new Title("Profit", Docking.Top);
             title.ForeColor = c;
             Chart1.Titles.Add(title);
-
+            s.Color = System.Drawing.Color.Green;
             //axis labels
             Chart1.ChartAreas[0].AxisY.LabelStyle.Format = "{0:} units";
             Chart1.ChartAreas[0].AxisY.LabelStyle.ForeColor = c;
