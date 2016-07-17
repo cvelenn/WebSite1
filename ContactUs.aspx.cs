@@ -26,7 +26,9 @@ public partial class ContactUs : System.Web.UI.Page
         {
             string body = "Question from: '" + UserName.Text + "'\n";
 
+            body += "Question: " + Request.Form["S1"] + "\n";
 
+            SendMail.SendEmail("Question", body, mail);
 
             Response.Redirect("Default.aspx");
         }
