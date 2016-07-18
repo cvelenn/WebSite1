@@ -132,9 +132,13 @@ public partial class _Default : System.Web.UI.Page
                 NumberOfTipsList.Add(count.ToString());
                 
             }
-            foreach (DateTime key in ChartDates.Keys)
+            var keys = ChartDates.Keys.ToArray();
+            double previouse = 0;
+            for (int i = keys.Length - 1; i >= 0; i--)
             {
-                s.Points.AddXY(key, ChartDates[key]);
+                ChartDates[keys[i]] += previouse;
+                s.Points.AddXY(keys[i], ChartDates[keys[i]]);
+                previouse = ChartDates[keys[i]];
             }
 
             System.Drawing.Color c = System.Drawing.Color.FromArgb(93, 123, 157);
