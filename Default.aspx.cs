@@ -140,7 +140,8 @@ public partial class _Default : System.Web.UI.Page
                 s.Points.AddXY(keys[i], ChartDates[keys[i]]);
                 previouse = ChartDates[keys[i]];
             }
-
+            s.BorderWidth = 3;
+           
             System.Drawing.Color c = System.Drawing.Color.FromArgb(93, 123, 157);
             s.Color = c;
             //title
@@ -148,13 +149,17 @@ public partial class _Default : System.Web.UI.Page
             title.ForeColor = c;
             Chart1.Titles.Add(title);
             s.Color = System.Drawing.Color.Green;
+  
             //axis labels
             Chart1.ChartAreas[0].AxisY.LabelStyle.Format = "{0:} units";
             Chart1.ChartAreas[0].AxisY.LabelStyle.ForeColor = c;
             Chart1.ChartAreas[0].AxisX.LabelStyle.Format = "{0:MM/yy}";
 
+            c = System.Drawing.Color.FromArgb(20, 0, 0, 0);
+            Chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = c;
+            Chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = c;
             // ToolTip="Date: #VALX, Profit: #VALY units"
-
+            
             reader.Close();
         }
         connection.Close();

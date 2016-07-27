@@ -37,7 +37,7 @@
     <div class="table-container">
         <table>            
             <tr style="background: #5D7B9D; color: white">
-                <th class="width50">Month</th>
+                <th class="width70">Month</th>
                 <th class="width50">Profit</th>
                 <th class="width100">Yield</th>
                 <th class="width50">No. Tips</th>
@@ -48,7 +48,7 @@
             <% for (int i = 0; i < MonthList.Count; i++)
                 { %>
                 <tr>
-                    <td class="width50"><%: MonthList[i]%></td>
+                    <td class="width70"><%: MonthList[i]%></td>
                     <td class="width50"><%: ProfitList[i]%></td>
                     <td class="width100"><%: YieldList[i]%>%</td>
                     <td class="width50"><%: NumberOfTipsList[i]%></td>

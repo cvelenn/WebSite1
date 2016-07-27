@@ -7,7 +7,5 @@
     <h2>
         About
     </h2>
-    <p>
-        raletovemail@asd.asdtest3
-    </p>
+
 </asp:Content>
