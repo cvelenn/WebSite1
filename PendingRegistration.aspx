@@ -6,7 +6,7 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     
     <h2>
-        Tnx for registering. We will inform u about further steps
+        Thank you for registering, you will be contacted by the Betting-Portfolio support as soon as possible.
     </h2>
 
     <div class="accountInfo">

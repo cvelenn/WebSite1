@@ -52,6 +52,9 @@
             ProviderName="<%$ ConnectionStrings:kladionicaConnectionString1.ProviderName %>" 
             SelectCommand="SELECT [id],[league], [event], [date], [selection], [odd], [stake], [profit], [result], [bookmaker] FROM [tips] order by [date] DESC">
         </asp:SqlDataSource>
+        <div class="time-zone">
+            *Central European Time Zone (UTC +01:00)
+        </div>
     </p>
     <p>
         &nbsp;</p>

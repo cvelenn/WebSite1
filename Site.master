@@ -11,7 +11,19 @@
 <script src="Scripts/jquery.datetimepicker.js" type="text/javascript"></script>
 <link href="Styles/jquery.datetimepicker.css" rel="stylesheet" type="text/css" />
 <link href="Styles/jquery-ui.min.css" rel="stylesheet" type="text/css" />
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        var td = $('table td');
+        for (var i = 0; i < td.length; i++) {
+            
+            if ($(td[i]).text().trim() === "Won") {
+                $(td[i]).css('color', 'green');
+            } else if ($(td[i]).text().trim() === "Lost") {
+                $(td[i]).css('color', 'red');
+            }
+        }
+    }); 
+</script>
 
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
@@ -29,7 +41,7 @@
             <div class="loginDisplay">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
-                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
+                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> / <a href="~/RegisterUser.aspx" ID="A1" runat="server">Register</a>]
                     </AnonymousTemplate>
                     <LoggedInTemplate>
                         Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
@@ -41,7 +53,7 @@
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>  
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About Us"/>  
                         <asp:MenuItem NavigateUrl="~/Overall.aspx" Text="Overall results"/>
                         <asp:MenuItem value="InsertTip" NavigateUrl="InsertTip2.aspx" Text="Insert Tip"/>
                         <asp:MenuItem value="UpdateUserStatus" NavigateUrl="UpdateUserStatus.aspx" Text="Update User Status"/>

@@ -50,15 +50,22 @@ public partial class _Default : System.Web.UI.Page
         connection.Open();
 
         SqlDataReader reader = command.ExecuteReader();
+        int noVoids = 0;
         try
         {
+            
             while (reader.Read())
             {
                 dates.Add(DateTime.Parse(reader[0].ToString()));
                 odds.Add(double.Parse(reader[1].ToString()));
                 stake.Add(double.Parse(reader[2].ToString()));
                 profit.Add(double.Parse(reader[3].ToString()));
-                result.Add(reader[4].ToString().ToLower().Trim().Equals("won"));
+                var res = reader[4].ToString().ToLower().Trim();
+                if (res.Equals("void")) {
+                    noVoids++;
+                }
+                
+                result.Add(res.Equals("won"));
             }
         }
         catch(Exception)
@@ -111,7 +118,7 @@ public partial class _Default : System.Web.UI.Page
             }
             TotalProfit = prof.ToString();
             Yield = string.Format("{0:0.00}", ((prof/st)*100));
-            WinRate = string.Format("{0:0.00}", ((winRate / profit.Count) * 100));
+            WinRate = string.Format("{0:0.00}", ((winRate / (profit.Count - noVoids)) * 100));
             AverageOdds = string.Format("{0:0.00}", (avg / profit.Count));
             NumberOfTips = profit.Count.ToString();
 

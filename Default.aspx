@@ -7,6 +7,9 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
+    <h1 class="my-h2">
+        Betting-Portfolio is a professional betting advice service specialized in major European football leagues. Our portfolio consists of 3 tipsters with 10+ years of experience in sports betting <a class="level1" href="About.aspx">...see more</a>
+    </h1>
     <h2 class="my-h2">
         Overall statistics
     </h2>
@@ -71,9 +74,14 @@
         </asp:Chart>
     </div>
 
+    <div class="verification-baner">
+        <a href="http://www.betrush.com/verified/3540.html" target="_blank"><img src="http://www.betrush.com/verified/pictures/verified.gif" border="0"></a>
+    </div>
+    <div>
     <h2>
         Table of tips
     </h2>
+    </div>
     <p>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
             CellPadding="4" DataSourceID="SqlDataSource2" 
@@ -112,6 +120,12 @@
             ConnectionString="<%$ ConnectionStrings:kladionicaConnectionString1 %>" 
             ProviderName="<%$ ConnectionStrings:kladionicaConnectionString1.ProviderName %>" >
         </asp:SqlDataSource>
+        <div class="time-zone">
+            *Central European Time Zone (UTC +01:00)
+        </div>
+        <div class="see-all-tips">
+            <a href="Overall.aspx" ID="A1" runat="server">See all tips</a>
+        </div>
     </p>
     <p>
         &nbsp;</p>
