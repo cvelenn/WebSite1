@@ -333,3 +333,11 @@ div.accountInfo
 {
     padding-bottom: 10px;
 }
+.verification-baner 
+{
+    height: 40px;
+}
+.verification-baner a
+{
+    float: right;
+}

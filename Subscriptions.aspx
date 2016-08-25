@@ -16,7 +16,7 @@
             <li>6 months: 279 euro (save 21%) </li>
             <li>12 months: 499 euro (save 30%)</li>
         </ul>
-<%--        <div>
+        <div>
             <form action="https://www.sandbox.paypal.com/webapps/adaptivepayment/flow/pay&paykey=AP-9HY848657G6071234" target="PPDGFrame"
             class="standard">
             <label for="buy">
@@ -28,7 +28,7 @@
             <script type="text/javascript" charset="utf-8">
                 var embeddedPPFlow = new PAYPAL.apps.DGFlow({ trigger: 'submitBtn' });
             </script>
-        </div>--%>
+        </div>
         <br>
         <div>
             If you prefer alternative payment methods (Skrill or Neteller) please <a class="level1" href="ContactUs.aspx">contact us</a>
