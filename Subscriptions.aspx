@@ -9,25 +9,17 @@
         Subscriptions
     </h2>
     <div class="accountInfo">
-        You can choose one of the following membership options:
-        <ul>
-            <li>1 month: 59 euro </li>
-            <li>3 months: 159 euro (save 10%) </li>
-            <li>6 months: 279 euro (save 21%) </li>
-            <li>12 months: 499 euro (save 30%)</li>
-        </ul>
+        You can choose one of the following membership options:<br><br>
+        
+             <asp:RadioButton ID="RadioButton1" runat="server" Checked GroupName="option" />1 month: 59 euro <br>
+             <asp:RadioButton ID="RadioButton2" runat="server"  GroupName="option"/>3 months: 159 euro (save 10%)<br>
+             <asp:RadioButton ID="RadioButton3" runat="server"  GroupName="option"/>6 months: 279 euro (save 21%)<br>
+             <asp:RadioButton ID="RadioButton4" runat="server"  GroupName="option"/>12 months: 499 euro (save 30%)<br><br>
+        
         <div>
-            <form action="https://www.sandbox.paypal.com/webapps/adaptivepayment/flow/pay&paykey=AP-9HY848657G6071234" target="PPDGFrame"
-            class="standard">
-            <label for="buy">
-                Use PayPal:</label>
-            <input type="image" id="submitBtn" value="Pay with PayPal" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif">
-            <input id="type" type="hidden" name="expType" value="light">
-            <input id="paykey" type="hidden" name="paykey" value="AP-9HY848657G6071234">
-            </form>
-            <script type="text/javascript" charset="utf-8">
-                var embeddedPPFlow = new PAYPAL.apps.DGFlow({ trigger: 'submitBtn' });
-            </script>
+            <asp:ImageButton ID="ImageButton1" runat="server" 
+                ImageUrl="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" 
+                onclick="ImageButton1_Click" /> 
         </div>
         <br>
         <div>
