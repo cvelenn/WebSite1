@@ -10,6 +10,7 @@ using System.Configuration;
 public partial class Subscriptions : System.Web.UI.Page
 {
     private string url = ConfigurationManager.AppSettings["url"].ToString();
+    private string payPal = ConfigurationManager.AppSettings["PayPalUrl"].ToString();
     protected void Page_Load(object sender, EventArgs e)
     {
         Models.User user = Session["user"] as Models.User;
@@ -51,6 +52,6 @@ public partial class Subscriptions : System.Web.UI.Page
             option = "12 months";
         }
         Session["ammount"] = ammount;
-        Response.Redirect("https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&business=support@betting-portfolio.com&item_name=" + option + "&amount=" + ammount + "&currency_code=EUR&return=" + url + "/Success.aspx&cancel_return=" + url + "/Failed.aspx");
+        Response.Redirect(string.Format(payPal, ammount, option) + "&return=" + url + "/Success.aspx&cancel_return=" + url + "/Failed.aspx");
     }
 }
