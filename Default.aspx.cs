@@ -43,8 +43,7 @@ public partial class _Default : System.Web.UI.Page
         List<double> stake = new List<double>();
         List<double> profit = new List<double>();
         List<bool> result = new List<bool>();
-        int startYear = -1;
-        int startMonth = -1;
+        int startMonths = -1;
         string start = string.Empty;
 
         connection.Open();
@@ -88,10 +87,9 @@ public partial class _Default : System.Web.UI.Page
 
             for (int i = 0; i < profit.Count; i++)
             {
-                if (startMonth == -1 || startYear < dates[i].Year || (startMonth > dates[i].Month && startYear == dates[i].Year))
+                if (startMonths == -1 || profit.Count < dates[i].Year * 12 + dates[i].Month)
                 {
-                    startMonth = dates[i].Month;
-                    startYear = dates[i].Year;
+                    startMonths = dates[i].Year * 12 + dates[i].Month;
                     start = dates[i].ToString("MMMM/yy");
                     MonthList.Add(start);
                     profitDict.Add(start, new List<double>());
